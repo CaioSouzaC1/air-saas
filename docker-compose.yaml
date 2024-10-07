@@ -1,0 +1,20 @@
+services:
+  php-nginx:
+    build: .
+    container_name: air-saas
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/app
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
