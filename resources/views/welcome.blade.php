@@ -1,7 +1,8 @@
 <x-layouts.app>
-    <h1 class="text-yellow-400 font-bold underline">
+    <h1 class="border">
         Hello world!
     </h1>
+
     <x-alert title="Any Message!" />
 
     <x-alert title="Any Message!" secondary />

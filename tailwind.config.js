@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 export default {
     presets: [require("./vendor/wireui/wireui/tailwind.config.js")],
     content: [
@@ -10,7 +12,19 @@ export default {
         "./vendor/wireui/wireui/src/Components/**/*.php",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                primary: colors.sky,
+                secondary: colors.stone,
+                positive: colors.emerald,
+                negative: colors.red,
+                warning: colors.amber,
+                info: colors.blue
+            },
+            fontFamily: {
+                segoe: ['"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+              },
+        },
     },
     plugins: [],
 };

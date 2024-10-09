@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    
+    * {
+        @apply border-sky-400 text-stone-950 transition-all font-segoe;
+    }
+    
+    body {
+        @apply bg-sky-50;
+    }
+
+    a {
+        @apply text-sky-700 underline;
+    }
+
+}
