@@ -2,18 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    
-    * {
-        @apply border-sky-400 text-stone-950 transition-all font-segoe;
-    }
-    
-    body {
-        @apply bg-sky-50;
-    }
-
-    a {
-        @apply text-sky-700 underline;
-    }
-
+/* Table pagination: active page highlight */
+.mary-table-pagination span[aria-current="page"] > span {
+    @apply bg-primary text-base-100
 }
+
+/* Table pagination: for dark mode*/
+.mary-table-pagination span[aria-disabled="true"] span {
+    @apply bg-inherit
+}
+
+/* Table pagination: for dark mode */
+.mary-table-pagination button {
+    @apply bg-base-100
+}
+
