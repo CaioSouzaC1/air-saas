@@ -11,9 +11,17 @@ export default {
         "./vendor/robsontenorio/mary/src/View/Components/**/*.php"
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                segoe: ['"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+              },
+        },
     },
 
     // Add daisyUI
-    plugins: [require("daisyui")]
+    plugins: [require("daisyui")],
+     // daisyUI config (optional - here are the default values)
+  daisyui: {
+    themes: ['nord'], 
+  },
 }
