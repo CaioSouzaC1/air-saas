@@ -1,3 +1,3 @@
 <x-layouts.app>
-    cu cego
+    Welcome
 </x-layouts.app>

@@ -11,6 +11,7 @@ services:
       WEB_DOCUMENT_ROOT: /app/public
     depends_on:
       - db
+    user: "${UID}:${GID}"
 
   db:
     image: mysql:8.0

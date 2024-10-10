@@ -10,17 +10,14 @@
 </head>
 <body class="min-h-screen">
 
+    <livewire:header />
     <div class="max-w-md mx-auto px-4"> 
-    <header class="flex h-12 border-b py-2">
 
-       <livewire:header />
-
-    </header>
-
-    <main >
-        {{$slot}}
-    </main> 
-</div>
+        <main class="min-h-[calc(100vh-7rem)] py-4">
+            {{$slot}}
+        </main> 
+    </div>
+    <livewire:footer/>
    <x-toast />
 </body>
 </html>
