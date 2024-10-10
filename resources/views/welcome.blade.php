@@ -1,3 +1,5 @@
 <x-layouts.app>
-    Welcome
+
+    <livewire:login-form/>
+
 </x-layouts.app>
