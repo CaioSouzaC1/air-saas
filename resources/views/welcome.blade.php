@@ -1,5 +1,5 @@
 <x-layouts.app>
 
-    <livewire:login-form/>
+    <livewire:forms.login-form/>
 
 </x-layouts.app>

@@ -4,6 +4,6 @@
         <div>...</div>
         <x-button label="Close" wire:click="closeDrawer" />
     </x-drawer>
-    <x-button class="btn-sm btn-secondary text-sky-50" icon='o-bars-4' wire:click="openDrawer" />
+    <x-button class="btn-sm btn-primary text-sky-50" icon='o-bars-4' wire:click="openDrawer" />
 </header>
 
