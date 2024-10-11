@@ -1,1 +1,1 @@
-<x-input label="Telephone" wire:model.blur="telephone" inline />
+<x-input label="Telephone" wire:model.live="telephone" inline />

@@ -4,9 +4,13 @@ namespace App\Livewire\Forms;
 
 use App\Services\AuthService;
 use Livewire\Component;
+use Mary\Traits\Toast;
 
 class LoginForm extends Component
 {
+
+    use Toast;
+
 
     public string $telephone = '';
     public string $password = '';
@@ -36,7 +40,14 @@ class LoginForm extends Component
     public function login(AuthService $authService)
     {
         $this->validate();
-        $authService->login($this->all());
+        if (!$authService->login($this->all()))
+            $this->error(
+                title: 'Invalid credentials',
+                position: 'toast-top toast-center',
+                icon: 'o-exclamation-circle',
+                timeout: 3000,
+            );
+        
     }
 
     public function navigateToCreateView()

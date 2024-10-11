@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/create-account', function () {
     return view('create-account');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});

@@ -1,3 +1,1 @@
-<div>
-    <x-password label="Password" wire:model.blur="password" clearable inline  />
-</div>
+<x-password label="Password" wire:model.live="password" clearable inline  />

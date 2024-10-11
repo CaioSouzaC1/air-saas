@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
 class AuthService
 {
 
@@ -20,16 +19,11 @@ class AuthService
         );
     }
 
-    public static function login(array $data)
+    public function login(array $data)
     {
-
-        if (User::where($data)->first()) {
-            dd(User::where($data)->first());
-        }
-
         if (Auth::attempt($data)) {
-            redirect("/dashboard");
+            return redirect("/dashboard");
         }
-        dd('senha ruikm');
+        return false;
     }
 }
