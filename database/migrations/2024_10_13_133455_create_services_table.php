@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,14 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('email')->unique()->nullable();
-            $table->string('telephone')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('type', ['client', 'operator', 'worker'])->default('worker');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->float('price');
             $table->timestamps();
+            $table->foreignIdFor(User::class, 'user_id');
             $table->softDeletes();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('services');
     }
 };

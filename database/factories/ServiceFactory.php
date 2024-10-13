@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Machine>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Service>
  */
-class MachineFactory extends Factory
+class ServiceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,9 @@ class MachineFactory extends Factory
     {
         return [
             'user_id' => User::factory()->create()->id,
-            'name' => $this->faker->randomElement(['Air conditioning', 'Refrigerator', 'Stove', 'Microwave']),
-            'model' => $this->faker->randomElement(['Samsung', 'LG', 'Electrolux', 'Brastemp']),
+            'name' => 'Fix ' . $this->faker->randomElement(['Air conditioning', 'Refrigerator', 'Stove', 'Microwave']),
+            'description' => $this->faker->sentence,
+            'price' => $this->faker->randomFloat(2, 1, 200),
         ];
     }
 }

@@ -53,4 +53,15 @@ class User extends Authenticatable
     {
         return 'telephone';
     }
+
+
+    public function machines()
+    {
+        return $this->hasMany(Machine::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }
