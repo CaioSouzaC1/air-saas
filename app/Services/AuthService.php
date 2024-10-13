@@ -14,16 +14,29 @@ class AuthService
             [
                 "email" => $data["email"],
                 "telephone" => $data["telephone"],
-                "password"  => Hash::make($data["password"])
+                "password"  => $data["password"]
             ]
         );
     }
 
     public function login(array $data)
     {
-        if (Auth::attempt($data)) {
-            return redirect("/dashboard");
+
+        $user = User::where(['telephone' => $data['telephone']])->first();
+
+        if (!$user) {
+            return false;
+        }
+
+        if (Hash::check($data['password'], $user->password)) {
+            Auth::login($user);
+            return true;
         }
         return false;
+    }
+
+    public function logout()
+    {
+        Auth::logout();
     }
 }

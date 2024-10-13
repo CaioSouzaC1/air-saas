@@ -40,19 +40,22 @@ class LoginForm extends Component
     public function login(AuthService $authService)
     {
         $this->validate();
-        if (!$authService->login($this->all()))
+        if (!$authService->login($this->all())) {
             $this->error(
                 title: 'Invalid credentials',
                 position: 'toast-top toast-center',
                 icon: 'o-exclamation-circle',
                 timeout: 3000,
             );
-        
+            return;
+        }
+        return to_route("dashboard");
+
     }
 
     public function navigateToCreateView()
     {
-        return redirect('/create-account');
+        return to_route('create-account');
     }
 
     public function render()

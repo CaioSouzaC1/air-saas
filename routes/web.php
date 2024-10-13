@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/create-account', function () {
     return view('create-account');
-});
+})->name('create-account');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->middleware('auth')->name('dashboard');

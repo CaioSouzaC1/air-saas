@@ -18,7 +18,6 @@ class CreateAccountForm extends Component
         'emailUpdated' => 'setEmail'
     ];
 
-
     public function setTelephone($value)
     {
         $this->telephone = $value;
@@ -41,12 +40,13 @@ class CreateAccountForm extends Component
 
     public function register(AuthService $authService)
     {
-        // dd($this->all(), $this->email, $this->password);
         $authService->register($this->all());
+        if ($authService->login(['telephone' => $this->telephone, 'password' => $this->password]))
+            return to_route("dashboard");
     }
 
     public function navigateToLoginView()
     {
-        return redirect('/');
+        return to_route('welcome');
     }
 }
