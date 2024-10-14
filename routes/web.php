@@ -25,3 +25,8 @@ Route::get('/create-account', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
+
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
