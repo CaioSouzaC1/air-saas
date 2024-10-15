@@ -1,15 +1,5 @@
 <div>
     
-@php
-    $clients = App\Models\Client::with('user')->where('worker_id', Auth::id())->paginate($this->perPage);
-
-    $headers = [
-        ['key' => 'user.telephone', 'label' => 'Telephone'],
-        ['key' => 'user.name', 'label' => 'Name'],
-        ['key' => 'actions', 'label' => 'Actions'], 
-    ];
-@endphp
-
 <livewire:tables.table-title text="List of customers" />
 
 <x-table 
