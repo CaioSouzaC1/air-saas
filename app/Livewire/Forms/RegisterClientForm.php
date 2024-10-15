@@ -3,23 +3,24 @@
 namespace App\Livewire\Forms;
 
 use App\Services\AuthService;
+use App\Services\ClientService;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Mary\Traits\Toast;
 
-class LoginForm extends Component
+class RegisterClientForm extends Component
 {
 
     use Toast;
 
     public string $telephone = '';
-    public string $password = '';
+    public string $name = '';
 
     public function rules()
     {
         return [
             'telephone' => ['required', 'integer'],
-            'password' => ['required', 'string'],
+            'name' => ['required', 'string'],
         ];
     }
 
@@ -29,26 +30,25 @@ class LoginForm extends Component
         $this->telephone = $value;
     }
 
-    #[On('passwordUpdated')]
-    public function setPassword($value)
+    #[On('nameUpdated')]
+    public function setNameAttr($value)
     {
-        $this->password = $value;
+        $this->name = $value;
     }
 
-    public function login(AuthService $authService)
+    public function register(ClientService $clientService)
     {
         $this->validate();
-        if (!$authService->login($this->all())) {
+        if (!$clientService->registerClient($this->all())) {
             $this->error(
-                title: 'Invalid credentials',
+                title: 'Error creating client',
                 position: 'toast-top toast-center',
                 icon: 'o-exclamation-circle',
                 timeout: 3000,
             );
             return;
         }
-        return to_route("dashboard");
-
+        return to_route("clients");
     }
 
     public function navigateToCreateView()
@@ -58,6 +58,6 @@ class LoginForm extends Component
 
     public function render()
     {
-        return view('livewire.forms.login-form');
+        return view('livewire.forms.register-client-form');
     }
 }

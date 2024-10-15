@@ -22,11 +22,21 @@ Route::get('/create-account', function () {
     return view('create-account');
 })->name('create-account');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
-
-
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/clients/register', function () {
+        return view('register-client');
+    })->name('register-client');
+
+    Route::get('/clients', function () {
+        return view('clients');
+    })->name('clients');
+});

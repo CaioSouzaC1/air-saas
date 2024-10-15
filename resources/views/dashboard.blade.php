@@ -1,11 +1,5 @@
 <x-layouts.app>
 
-    <div class="breadcrumbs text-sm">
-        <ul>
-          <li>Dashboard</li>
-        </ul>
-      </div>
-
-    <p>Usuário logado: {{ Auth::user()->email ?? 'Nenhum usuário' }}</p>
+    <p class="text-center">Welcome back: <span class="font-semibold"> {{ Auth::user()->email ?? '' }} </span></p>
 
 </x-layouts.app>

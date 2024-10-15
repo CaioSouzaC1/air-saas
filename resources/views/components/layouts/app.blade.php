@@ -9,10 +9,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen">
-
     <livewire:header />
     <div class="max-w-md mx-auto px-4"> 
-
         <main class="min-h-[calc(100vh-7rem)] py-4">
             {{$slot}}
         </main> 

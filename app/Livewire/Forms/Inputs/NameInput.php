@@ -4,29 +4,28 @@ namespace App\Livewire\Forms\Inputs;
 
 use Livewire\Component;
 
-class TelephoneInput extends Component
+class NameInput extends Component
 {
-    public string $telephone;
+    public string $name;
 
     public function rules()
     {
         return [
-            'telephone' => ['required', 'integer'],
+            'name' => ['required', 'string'],
         ];
     }
 
-    public function updatedTelephone($value)
+    public function updatedName($value)
     {
-        $this->dispatch('telephoneUpdated', $value);
+        $this->dispatch('nameUpdated', $value);
     }
 
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
     }
-
     public function render()
     {
-        return view('livewire.forms.inputs.telephone-input');
+        return view('livewire.forms.inputs.name-input');
     }
 }
