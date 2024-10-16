@@ -11,7 +11,7 @@
         option-label="user.name"
         option-sub-label="user.telephone"
         searchable
-        wire:change="$emit('clientIdUpdated', $event.target.value)"
+        wire:change="$dispatch('clientIdUpdated', $event.target.value)"
         />
 
     <livewire:forms.inputs.name-input icon="o-radio" />

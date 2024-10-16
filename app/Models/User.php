@@ -57,6 +57,11 @@ class User extends Authenticatable
     }
 
 
+    public function client()
+    {
+        return $this->hasMany(Client::class);
+    }
+
     public function machines()
     {
         return $this->hasMany(Machine::class);
