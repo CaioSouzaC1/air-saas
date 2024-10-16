@@ -39,4 +39,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/clients', function () {
         return view('clients');
     })->name('clients');
+
+    Route::get('/machines/register', function () {
+        return view('register-machine');
+    })->name('register-machine');
+
+    Route::get('/machines', function () {
+        return view('machines');
+    })->name('machines');
 });

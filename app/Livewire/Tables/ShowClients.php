@@ -31,9 +31,7 @@ class ShowClients extends Component
 
     public function delete($id)
     {
-        dd($id);
-        //n ta chegando aqui n sei pq
-
+        Client::findOrFail($id)->delete();
     }
 
     public function render()

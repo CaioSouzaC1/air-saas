@@ -1,3 +1,3 @@
 <div>
-    <x-input label="Name" wire:model.live="name" icon='o-user-circle' inline />
+    <x-input label="Name" wire:model.live="name" icon="{{$icon}}" inline />
 </div>

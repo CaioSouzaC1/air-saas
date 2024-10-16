@@ -20,14 +20,11 @@
     @endscope
 
     @scope('cell_actions', $client)
-
         <x-button 
             icon="o-trash" 
-            wire:click="delete({{ $client->id }})"
-            spinner 
+            wire:click="delete('{{ $client->id }}')"
             class="btn-sm" 
         />
     @endscope
-
 </x-table>
 </div>

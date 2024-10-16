@@ -7,6 +7,7 @@ use Livewire\Component;
 class NameInput extends Component
 {
     public string $name;
+    public string $icon = "o-user-circle";
 
     public function rules()
     {
@@ -26,6 +27,8 @@ class NameInput extends Component
     }
     public function render()
     {
-        return view('livewire.forms.inputs.name-input');
+        return view('livewire.forms.inputs.name-input', [
+            'icon' => $this->icon
+        ]);
     }
 }
