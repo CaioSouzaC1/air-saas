@@ -13,12 +13,16 @@ class ShowMachines extends Component
     use WithPagination;
 
     public string $perPage = '10';
+    public bool $showModal = false;
+    public string $qrcodeSrc = '';
+    public string $machineId = '';
 
     public function getHeadersProperty()
     {
         return [
             ['key' => 'machine.name', 'label' => 'Name'],
             ['key' => 'machine.model', 'label' => 'Model'],
+            ['key' => 'qrcode', 'label' => 'QR CODE'],
             ['key' => 'actions', 'label' => 'Actions'],
         ];
     }
@@ -36,6 +40,20 @@ class ShowMachines extends Component
     {
         dd('tem delete ainda nao');
     }
+
+    public function openModal($machineId)
+    {
+        $this->machineId = $machineId;
+        $this->showModal = true;
+        $machine = Machine::where(['id' => $machineId])->first();
+        $this->qrcodeSrc = $machine->generateQrCode();
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
+    }
+
     public function render()
     {
         return view('livewire.tables.show-machines', [

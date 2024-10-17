@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Auth\FastLogin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::get('/login', function () {
 })->name('login');
 
 
+Route::get('/fast-login/{userId}/{machineId}', [FastLogin::class, 'login'])->name('fast-login');
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -47,4 +50,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/machines', function () {
         return view('machines');
     })->name('machines');
+
+    Route::prefix('/my')->group(function () {
+        Route::get('/machines', function () {
+            return view('my-machines');
+        })->name('my-machines');
+    });
 });

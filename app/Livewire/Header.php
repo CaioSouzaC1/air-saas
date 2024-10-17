@@ -26,6 +26,11 @@ class Header extends Component
         to_route("welcome");
     }
 
+    public function login()
+    {
+        return to_route("login");
+    }
+
     public function render()
     {
         return view('livewire.header');
