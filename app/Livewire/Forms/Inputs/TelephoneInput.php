@@ -11,13 +11,13 @@ class TelephoneInput extends Component
     public function rules()
     {
         return [
-            'telephone' => ['required', 'integer'],
+            'telephone' => ['string', 'regex:/^\(\d{2}\) \d{5}-\d{4}$/'],
         ];
     }
 
     public function updatedTelephone($value)
     {
-        $this->dispatch('telephoneUpdated', $value);
+        $this->dispatch('telephoneUpdated', preg_replace('/\D/', '', $value));
     }
 
     public function updated($propertyName)

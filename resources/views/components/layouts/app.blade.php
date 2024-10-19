@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ isset($title) ? $title.' - '.config('app.name') : config('app.name') }}</title>
 
+    <script src="https://unpkg.com/imask"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen">
@@ -18,4 +19,11 @@
     <livewire:footer/>
    <x-toast />
 </body>
+<script>
+  document.addEventListener('alpine:init', () => {
+            Alpine.magic('moneyMask', () => (input) => {
+                return input.length > 5 ? '999,99' : '99,99';
+            });
+        });
+</script>    
 </html>

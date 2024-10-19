@@ -38,7 +38,7 @@ class ShowMachines extends Component
 
     public function delete($id)
     {
-        dd('tem delete ainda nao');
+        Machine::findOrFail($id)->delete();
     }
 
     public function openModal($machineId)

@@ -31,27 +31,44 @@ Route::get('/login', function () {
 Route::get('/fast-login/{userId}/{machineId}', [FastLogin::class, 'login'])->name('fast-login');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 
-    Route::get('/clients/register', function () {
-        return view('register-client');
-    })->name('register-client');
+    Route::middleware(['user.type:worker'])->group(function () {
 
-    Route::get('/clients', function () {
-        return view('clients');
-    })->name('clients');
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
 
-    Route::get('/machines/register', function () {
-        return view('register-machine');
-    })->name('register-machine');
+        Route::prefix('/clients')->group(function () {
+            Route::get('/', function () {
+                return view('clients');
+            })->name('clients');
+            Route::get('/register', function () {
+                return view('register-client');
+            })->name('register-client');
+        });
 
-    Route::get('/machines', function () {
-        return view('machines');
-    })->name('machines');
+        Route::prefix('/machines')->group(function () {
+            Route::get('/', function () {
+                return view('machines');
+            })->name('machines');
 
-    Route::prefix('/my')->group(function () {
+            Route::get('/register', function () {
+                return view('register-machine');
+            })->name('register-machine');
+        });
+
+        Route::prefix('/services')->group(function () {
+            Route::get('/', function () {
+                return view('services');
+            })->name('services');
+
+            Route::get('/register', function () {
+                return view('register-service');
+            })->name('register-service');
+        });
+    });
+
+    Route::middleware(['user.type:client'])->prefix('/my')->group(function () {
         Route::get('/machines', function () {
             return view('my-machines');
         })->name('my-machines');

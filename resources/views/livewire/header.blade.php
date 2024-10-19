@@ -3,31 +3,42 @@
         <img class="w-10 h-10" src="/images/brand/logo.svg" alt="xdxd">
     </a>
     <x-drawer wire:model="showDrawer" class="w-9/12 lg:w-1/3 !px-4">
-            <x-menu class="border border-dashed w-full">
-    
-                @php 
-                    if(Auth::user()->type === "worker") {
+        
+        @php 
+                if(Auth::user()) {
+                    @endphp
+                    <x-menu class="border border-dashed w-full">
+                      @php 
+                        if(Auth::user()->type === "worker") {
+                            @endphp
+                                <x-menu-item title="Dashboard" icon="o-building-storefront" link="/dashboard"/>
+                                <x-menu-separator />
+                                <x-menu-sub title="Clients" icon="o-user-group">
+                                        <x-menu-item title="Register new" icon="o-user-plus" link="/clients/register" />
+                                        <x-menu-item title="Full List" icon="o-clipboard-document-list" link="/clients" />
+                                </x-menu-sub>
+                                <x-menu-separator />
+                                <x-menu-sub title="Machines" icon="o-radio">
+                                    <x-menu-item title="Register new" icon="o-swatch" link="/machines/register" />
+                                    <x-menu-item title="Full List" icon="o-clipboard-document-list" link="/machines" />
+                                </x-menu-sub>
+                                <x-menu-separator />
+                                <x-menu-sub title="Services" icon="o-wrench-screwdriver">
+                                    <x-menu-item title="Register new" icon="o-plus" link="/services/register" />
+                                    <x-menu-item title="Full List" icon="o-wrench" link="/services" />
+                                </x-menu-sub>
+                            @php
+                        } elseif(Auth::user()->type === "client") {
+                            @endphp
+                                <x-menu-item title="Machines" icon="o-radio" link="/my/machines" />
+                            @php
+                        }
                         @endphp
-                            <x-menu-item title="Dashboard" icon="o-building-storefront" link="/dashboard"/>
-                            <x-menu-separator />
-                            <x-menu-sub title="Clients" icon="o-user-group">
-                                    <x-menu-item title="Register new" icon="o-user-plus" link="/clients/register" />
-                                    <x-menu-item title="Full List" icon="o-clipboard-document-list" link="/clients" />
-                            </x-menu-sub>
-                            <x-menu-separator />
-                            <x-menu-sub title="Machines" icon="o-radio">
-                                <x-menu-item title="Register new" icon="o-swatch" link="/machines/register" />
-                                <x-menu-item title="Full List" icon="o-clipboard-document-list" link="/machines" />
-                            </x-menu-sub>
-                        @php
-                    } elseif(Auth::user()->type === "client") {
-                        @endphp
-                            <x-menu-item title="Machines" icon="o-radio" link="/my/machines" />
-                        @php
-                    }
+                        </x-menu>
+                      @php 
+                }
                 @endphp
 
-            </x-menu>
             <div class="grid grid-cols-2 gap-4 my-4">
                 <x-button label="Close" wire:click="closeDrawer" icon="o-x-circle" class="w-full"/>
                 @php 
