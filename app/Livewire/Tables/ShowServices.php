@@ -32,17 +32,11 @@ class ShowServices extends Component
     {
         Service::findOrFail($id)->delete();
     }
-
-    public function update($id)
-    {
-        dd('logo logo update');
-    }
-
     public function render()
     {
         return view('livewire.tables.show-services', [
             'headers' => $this->headers,
-            'services' => $this->services
+            'services' => $this->services,
         ]);
     }
 }

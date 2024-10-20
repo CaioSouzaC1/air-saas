@@ -14,7 +14,7 @@
         @scope('cell_name', $service)
             <div class="flex flex-col gap-1">
                 <strong>{{ $service->name }}</strong>
-                <span>{{$service->price}}</span>
+                <span>{{ $service->price }}</span>
             </div>
         @endscope
 
@@ -23,18 +23,11 @@
         @endscope
 
         @scope('cell_actions', $service)
-        <div class="flex flex-col gap-1">
             <x-button 
             icon="o-trash" 
             wire:click="delete('{{ $service->id }}')"
             class="btn-sm" 
             />
-            <x-button 
-            icon="o-pencil-square" 
-            wire:click="update('{{ $service->id }}')"
-            class="btn-sm btn-secondary" 
-            />
-        </div>
         @endscope
 
     </x-table>
