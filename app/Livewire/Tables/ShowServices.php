@@ -25,7 +25,7 @@ class ShowServices extends Component
 
     public function getServicesProperty()
     {
-        return Service::where(['user_id' => Auth::id()])->paginate($this->perPage);
+        return Service::where(['worker_id' => Auth::user()->worker_id])->paginate($this->perPage);
     }
 
     public function delete($id)

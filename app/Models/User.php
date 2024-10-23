@@ -38,6 +38,18 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = ['worker_id'];
+
+    public function getWorkerIdAttribute()
+    {
+        if ($this->type === 'worker') {
+            return $this->worker->id;
+        }
+        if ($this->type === 'operator') {
+            return $this->operator->worker->id;
+        }
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -70,5 +82,20 @@ class User extends Authenticatable
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    public function operator()
+    {
+        return $this->hasOne(Operator::class);
+    }
+
+    public function worker()
+    {
+        return $this->hasOne(Worker::class);
+    }
+
+    public function schedulings()
+    {
+        return $this->hasMany(Scheduling::class);
     }
 }

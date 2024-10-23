@@ -48,7 +48,7 @@ class CreateServiceForm extends Component
     public function register(ServiceService $serviceService)
     {
         $this->validate();
-        if (!$serviceService->register(['user_id' => Auth::id(), 'name' => $this->name, 'description' => $this->description, 'price' => str_replace(',', '.', $this->price)])) {
+        if (!$serviceService->register(['worker_id' => Auth::user()->worker_id, 'name' => $this->name, 'description' => $this->description, 'price' => str_replace(',', '.', $this->price)])) {
             $this->error(
                 title: 'Error creating service',
                 position: 'toast-top toast-center',

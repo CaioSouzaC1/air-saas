@@ -12,6 +12,10 @@ class ClientService
     {
 
         $worker = Auth::user();
+        match ($worker->type) {
+            'worker' => $worker = $worker->worker,
+            'operator' => $worker = $worker->operator->worker
+        };
 
         if (!$worker)
             return false;

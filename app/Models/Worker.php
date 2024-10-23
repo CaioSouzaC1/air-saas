@@ -7,25 +7,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Service extends Model
+class Worker extends Model
 {
-    /** @use HasFactory<\Database\Factories\ServiceFactory> */
     use HasFactory, SoftDeletes, HasUuids;
 
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'worker_id',
+        'user_id',
     ];
 
-    public function worker()
+    public function user()
     {
-        return $this->belongsTo(Worker::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function schedulings()
+    public function operators()
     {
-        return $this->hasMany(Scheduling::class);
+        return $this->hasMany(Operator::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
     }
 }

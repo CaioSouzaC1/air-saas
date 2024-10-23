@@ -31,7 +31,7 @@ class ShowMachines extends Component
     {
         return Machine::with('user')
             ->whereHas('user.client', function ($query) {
-                $query->where('worker_id', Auth::id());
+                $query->where('worker_id', Auth::user()->worker_id);
             })
             ->paginate($this->perPage);
     }

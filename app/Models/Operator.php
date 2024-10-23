@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Client extends Model
+class Operator extends Model
 {
-    /** @use HasFactory<\Database\Factories\ClientFactory> */
     use HasFactory, SoftDeletes, HasUuids;
 
     protected $fillable = [
@@ -17,17 +16,14 @@ class Client extends Model
         'worker_id'
     ];
 
-    public function worker()
-    {
-        return $this->belongsTo(User::class, 'worker_id');
-    }
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
-    public function schedulings()
+    public function worker()
     {
-        return $this->hasMany(Scheduling::class);
+        return $this->belongsTo(Worker::class);
     }
+
 }

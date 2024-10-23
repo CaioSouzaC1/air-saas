@@ -64,7 +64,7 @@ class CreateMachines extends Component
     public function getClientsProperty()
     {
         return Client::with('user')
-            ->where('worker_id', Auth::id())
+            ->where('worker_id', Auth::user()->worker_id)
             ->get();
     }
 

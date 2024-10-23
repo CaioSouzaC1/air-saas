@@ -32,7 +32,7 @@ Route::get('/fast-login/{userId}/{machineId}', [FastLogin::class, 'login'])->nam
 
 Route::middleware('auth')->group(function () {
 
-    Route::middleware(['user.type:worker'])->group(function () {
+    Route::middleware(['user.type:worker,operator'])->group(function () {
 
         Route::get('/dashboard', function () {
             return view('dashboard');
@@ -65,6 +65,25 @@ Route::middleware('auth')->group(function () {
             Route::get('/register', function () {
                 return view('register-service');
             })->name('register-service');
+        });
+
+        Route::prefix('/operators')->group(function () {
+            Route::get('/', function () {
+                return view('operators');
+            })->name('operators');
+
+            Route::get('/register', function () {
+                return view('register-operator');
+            })->name('register-operator');
+        });
+
+        Route::prefix('/schedule')->group(function () {
+            Route::get('/register', function () {
+                return view('register-schedule');
+            })->name('register-schedule');
+            Route::get('/', function () {
+                return view('schedule');
+            })->name('schedule');
         });
     });
 
