@@ -43,4 +43,9 @@ class Machine extends Model
 
         return "data:image/png;base64,{$base64}";
     }
+
+    public function schedules()
+    {
+        return $this->hasMany(Scheduling::class);
+    }
 }

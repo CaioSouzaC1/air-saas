@@ -13,12 +13,14 @@ return new class extends Migration {
         Schema::create('schedulings', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('client_id');
+            $table->uuid('machine_id');
             $table->uuid('service_id');
             $table->uuid('user_id');
             $table->dateTime('date');
 
             $table->foreign('client_id')->references('id')->on('users');
             $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('machine_id')->references('id')->on('machines');
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->softDeletes();

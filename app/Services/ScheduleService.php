@@ -9,6 +9,7 @@ class ScheduleService
     {
         $scheduling = Scheduling::create([
             'client_id' => $data['clientId'],
+            'machine_id' => $data['machineId'],
             'service_id' => $data['serviceId'],
             'user_id' => $data['operatorId'],
             'date' => $data['date'],

@@ -18,7 +18,7 @@ class ShowSchedule extends Component
         return [
             ['key' => 'client.name', 'label' => 'Client'],
             ['key' => 'service.name', 'label' => 'Service'],
-            ['key' => 'user.name', 'label' => 'Operator/Worker'],
+            ['key' => 'machine.name', 'label' => 'Machine'],
             ['key' => 'date', 'label' => 'Date'],
             ['key' => 'actions', 'label' => 'Actions'],
         ];
@@ -27,7 +27,7 @@ class ShowSchedule extends Component
     public function getScheduleProperty()
     {
         return Scheduling::where('user_id', Auth::user()->id)
-            ->with(['client', 'service', 'user'])
+            ->with(['client', 'service', 'user', 'machine'])
             ->paginate($this->perPage);
     }
 

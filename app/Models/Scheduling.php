@@ -14,6 +14,7 @@ class Scheduling extends Model
     protected $fillable = [
         'client_id',
         'service_id',
+        'machine_id',
         'user_id',
         'date',
 
@@ -32,5 +33,10 @@ class Scheduling extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function machine()
+    {
+        return $this->belongsTo(Machine::class);
     }
 }
