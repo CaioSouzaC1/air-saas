@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,7 +19,7 @@ class MachineFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create()->id,
+            'user_id' => Client::factory()->create()->user->id,
             'name' => $this->faker->randomElement(['Air conditioning', 'Refrigerator', 'Stove', 'Microwave']),
             'model' => $this->faker->randomElement(['Samsung', 'LG', 'Electrolux', 'Brastemp']),
         ];

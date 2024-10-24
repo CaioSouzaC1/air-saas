@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Worker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class ServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create()->id,
+            'worker_id' => Worker::get()->random()->id,
             'name' => 'Fix ' . $this->faker->randomElement(['Air conditioning', 'Refrigerator', 'Stove', 'Microwave']),
             'description' => $this->faker->sentence,
             'price' => $this->faker->randomFloat(2, 1, 200),
