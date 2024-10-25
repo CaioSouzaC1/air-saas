@@ -23,3 +23,12 @@ Air-SaaS é um sistema simples e prático para o gerenciamento de manutenção d
 -   **Acesso ao histórico de serviços**: Clientes podem visualizar todo o histórico de manutenções realizadas nas suas máquinas ao escanear o código QR.
 
 # Imagens das Páginas
+
+**Tela Inicial**
+![Home](public/readme/home.png)
+
+**Cliente**
+![Cliente](public/readme/qr_code_cliente.png)
+
+**Menu**
+![Menu](public/readme/menu.png)
